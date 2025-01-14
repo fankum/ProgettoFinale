@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Game - Sopravvivi tra gli Asteroidi!</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Style -->
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #fff;
+        }
+
+        header {
+            background: url('img/ufo_background.jpg') no-repeat center center/cover;
+            color: #fff;
+            padding: 80px 0;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+            header h1 {
+                font-size: 3.5rem;
+            }
+
+        .btn-custom {
+            background-color: #0d6efd !important;
+            color: #fff !important;
+        }
+
+        footer {
+            background-color: #161b22;
+            padding: 20px 0;
+        }
+
+        .gallery-img {
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff !important; /* Testo bianco */
+        }
+
+        .navbar-dark .navbar-brand {
+            color: #ffffff !important; /* Logo bianco */
+        }
+        .gallery-img {
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            cursor: pointer; /* Mostra il puntatore per indicare che l'immagine è cliccabile */
+            transition: transform 0.3s ease;
+        }
+        /* Sfondo uguale alla navbar */
+        .accordion-header button {
+            background-color: #161b22 !important;
+            color: #ffffff;
+        }
+
+        .accordion-body {
+            background-color: #161b22;
+            color: #ffffff;
+            padding: 1rem; /* Padding per mantenere il contenuto all'interno */
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #161b22 !important;
+            color: #ffffff;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        /* Contenere le immagini all'interno */
+        .accordion-body img {
+            max-width: 100%;
+            height: auto;
+        }
+
+            .gallery-img:hover {
+                transform: scale(1.05); /* Effetto al passaggio del mouse */
+            }
+
+        .modal-content {
+            background: none; /* Rimuove lo sfondo bianco del modal */
+            border: none; /* Rimuove i bordi */
+        }
+
+        .modal-dialog {
+            max-width: fit-content; /* Permette al modal di adattarsi alla dimensione originale dell'immagine */
+            margin: auto; /* Centra il modal */
+        }
+
+        .modal-content img {
+            width: auto; /* Mantiene la larghezza originale dell'immagine */
+            max-width: 100%; /* Evita che l'immagine esca dai bordi su schermi piccoli */
+            height: auto; /* Mantiene il rapporto originale */
+            display: block; /* Evita spazi indesiderati */
+            margin: auto; /* Centra l'immagine */
+        }
+
+        .carousel-caption p {
+            color: yellow !important; /* Colore giallo per i paragrafi */
+        }
+
+       /* Contenere le immagini all'interno */
+        .accordion-body img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" alt="Survival Game Logo" width="50" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#game-loop">Loop del Gioco</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gameplay</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#manuale">Manuale</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#storia-progetto">Storia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#download">Download</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contatti">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="text-center">
+        <div class="container">
+            <h1>Survival Game</h1>
+            <br />
+            <h2 class="lead">Sopravvivi agli asteroidi e difendi il tuo UFO!</h2>
+        </div>
+    </header>
+
+    <!-- Descrizione Dettagliata -->
+    <section id="game-loop" class="text-center py-5">
+        <div class="container">
+            <h3 class="mb-4">Come Funziona Survival Game</h3>
+            <p>
+                In Survival Game controlli un UFO con i tasti **W, A, S, D**. Lo scopo è semplice:
+                sopravvivere il più a lungo possibile evitando asteroidi e raccogliendo potenziamenti.
+                Gli asteroidi si generano automaticamente e si muovono verso l'UFO. Ogni impatto riduce la tua vita.
+                Per eliminare gli asteroidi basta premere i pulsanti del mouse e/o la barra spaziatrice.
+            </p>
+            <p>
+                Il gioco implementa un **loop continuo** che aggiorna costantemente la posizione degli oggetti, verifica le collisioni
+                e aggiorna il punteggio. Il tuo punteggio aumenta ogni asteroide che riesci a eliminare.
+            </p>
+        </div>
+    </section>
+
+    <!-- Galleria con Accordion -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h3 class="mb-4 text-center">Galleria</h3>
+            <p class="text-center">Clicca per espandere la galleria e scorrere tra le immagini.</p>
+
+            <!-- Accordion -->
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="accordion" id="galleryAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingGallery">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGallery" aria-expanded="false" aria-controls="collapseGallery">
+                                    Mostra Galleria
+                                </button>
+                            </h2>
+                            <div id="collapseGallery" class="accordion-collapse collapse" aria-labelledby="headingGallery" data-bs-parent="#galleryAccordion">
+                                <div class="accordion-body">
+                                    <!-- Carousel -->
+                                    <div id="carouselGallery" class="carousel slide" data-bs-ride="carousel">
+                                        <!-- Indicatori -->
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                            <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                            <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                            <button type="button" data-bs-target="#carouselGallery" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                        </div>
+
+                                        <!-- Immagini -->
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="img/sfondo.PNG" class="d-block w-100 rounded" alt="Gameplay 1">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>Menu Principale</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="img/sfondo2.PNG" class="d-block w-100 rounded" alt="Gameplay 2">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>Gioco all avvio</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="img/sfondo3.PNG" class="d-block w-100 rounded" alt="Gameplay 3">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>Schermata Game Over</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="img/sfondoInPausa.PNG" alt="Gameplay 3" class="img-fluid">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>Schermata Gioco in pausa.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="img/sfondoControlli.PNG" alt="Gameplay 3" class="img-fluid">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>Schermata dei controlli.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="img/giocoTest.PNG" alt="Gameplay 3" class="img-fluid">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    <p>Gioco durante la fase di test</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Controlli -->
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselGallery" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Precedente</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselGallery" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Successivo</span>
+                                        </button>
+                                    </div>
+                                    <!-- Fine Carousel -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Fine col-md-8 -->
+            </div> <!-- Fine row -->
+        </div>
+    </section>
+
+
+
+    <!-- Storia del Progetto -->
+    <section id="storia-progetto" class="text-center py-5">
+        <div class="container">
+            <h3 class="mb-4">Storia del Progetto</h3>
+            <p>
+                Survival Game è stato sviluppato come progetto  per esplorare le potenzialità di **Java Swing**
+                e la creazione di loop di gioco. Il gioco è stato progettato con una logica chiara e ottimizzata per gestire collisioni,
+                movimento e oggetti dinamici come asteroidi e potenziamenti.
+            </p>
+            <p>
+                Ogni componente è stato realizzato per mettere alla prova la mia conoscenza dei concetti di programmazione fino ad arrivare
+                a un gioco funzionante e fluido.
+            </p>
+        </div>
+    </section>
+
+    <!-- Manuale -->
+    <section id="manuale" class="text-center">
+        <div class="container">
+            <h3 class="mb-4">Manuale del Gioco</h3>
+            <p>Scarica il manuale tecnico con la documentazione completa del progetto.</p>
+            <a href="ManualeTecnico.pdf" class="btn btn-warning btn-lg" download>Scarica Manuale</a>
+        </div>
+    </section>
+
+    <!-- Sezione Contatti e Scarica il Gioco -->
+    <section id="info-sections" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Colonna Scarica il Gioco -->
+                <div class="col-md-6 mb-4">
+                    <div class="p-4 bg-dark text-white rounded shadow">
+                        <h3 class="text-center mb-3">Scarica il Gioco</h3>
+                        <p class="text-center">Scegli la versione più adatta al tuo sistema operativo e inizia a giocare!</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="SurvivalGame.jar" class="btn btn-warning btn-lg" download>Versione JAR</a>
+                            <a href="SurvivalGame.exe" class="btn btn-warning btn-lg" download>Versione EXE</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonna Contatti -->
+                <div class="col-md-6 mb-4">
+                    <div class="p-4 bg-dark text-white rounded shadow">
+                        <h3 class="text-center mb-3">Contatti</h3>
+                        
+                        <ul class="list-unstyled text-center mb-0">
+                            <li><strong>Email:</strong> <a href="mailto:info@survivalgame.com" class="text-warning">la mia Email</a></li>
+                            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/stefano-bruni93/" target="_blank" class="text-warning">Stefano Bruni</a></li>
+                            <br />
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2024 Survival Game. Tutti i diritti riservati.</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/stefano-bruni93/" target="_blank" class="text-primary">Stefano Bruni</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
